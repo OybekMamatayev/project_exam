@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:project_exam/core/routes/pages.dart';
+import 'package:project_exam/feature/auth/presentation/screens/forgot_password_screen.dart';
+import 'package:project_exam/feature/auth/presentation/screens/genre_percense_screen.dart';
+import 'package:project_exam/feature/auth/presentation/screens/log_in_email.dart';
+import 'package:project_exam/feature/auth/presentation/screens/login_in_password_screen.dart';
+import 'package:project_exam/feature/auth/presentation/screens/set_password_screen.dart';
+import 'package:project_exam/feature/auth/presentation/screens/sign_up_screen.dart';
+import 'package:project_exam/feature/auth/presentation/screens/verify_code_creen.dart';
+import 'package:project_exam/feature/detail/presentation/screens/detail_screen.dart';
+import 'package:project_exam/feature/explore/presentation/screens/explore_screen.dart';
+import 'package:project_exam/feature/explore/presentation/screens/product_screen.dart';
+import 'package:project_exam/feature/home/presentation/screens/home_screen.dart';
+import 'package:project_exam/feature/main_screen/presentation/screens/main_screen_screen.dart';
+import 'package:project_exam/feature/my_library/presentation/screens/my_library_screen.dart';
+
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
+  debugLabel: 'root',
+);
+
+class Routes {
+  static final GoRouter router = GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: Pages.homescreen,
+    routes: [
+      GoRoute(
+        path: Pages.logininemail,
+        builder: (context, state) => LogInEmail(),
+      ),
+      GoRoute(path: Pages.signup, builder: (context, state) => SignUpScreen()),
+      GoRoute(
+        path: Pages.logininpassword,
+        builder: (context, state) => LoginInPasswordScreen(),
+      ),
+      GoRoute(
+        path: Pages.verifycode,
+        builder: (context, state) => VerifyCodeCreen(),
+      ),
+      GoRoute(
+        path: Pages.forgotpassword,
+        builder: (context, state) => ForgotPasswordScreen(),
+      ),
+      GoRoute(
+        path: Pages.genrepercenseScreen,
+        builder: (context, state) => GenrePercenseScreen(),
+      ),
+      GoRoute(
+        path: Pages.setpassword,
+        builder: (context, state) => SetPasswordScreen(),
+      ),
+
+      ShellRoute(
+        builder: (context, state, child) =>
+            MainScreen(state: state, child: child),
+        routes: [
+          GoRoute(
+            path: Pages.homescreen,
+            builder: (context, state) => HomeScreen(),
+          ),
+          GoRoute(
+            path: Pages.explorescreen,
+            builder: (context, state) => ExploreScreen(),
+            routes: [
+              GoRoute(
+                path: Pages.productscreen,
+                builder: (context, state) {
+                  final title = state.extra as String? ?? 'Default Title';
+                  return ProductScreen(title: title);
+                },
+              ),
+            ],
+          ),
+
+          GoRoute(
+            path: Pages.mylibrary,
+            builder: (context, state) => MyLibraryScreen(),
+          ),
+          GoRoute(
+            path: Pages.detailscreen,
+            builder: (context, state) => DetailScreen(),
+          ),
+        ],
+      ),
+    ],
+  );
+}
