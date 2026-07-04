@@ -10,4 +10,6 @@ class AppImages {
   static const String futuramaback = "images/futurama_back.png";
   static const String explore = "images/explore.png";
   static const String mylibrary = "images/mylibrary.png";
+  static const String backaudio = "images/back_audio.png";
+  static const String account = "images/account.png";
 }

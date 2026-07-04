@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:project_exam/core/routes/pages.dart';
+import 'package:project_exam/feature/account/presentation/screens/account_screen.dart';
+import 'package:project_exam/feature/account/presentation/screens/add_payment_screen.dart';
+import 'package:project_exam/feature/account/presentation/screens/payment_screen.dart';
+import 'package:project_exam/feature/account/presentation/screens/profil_details_screen.dart';
 import 'package:project_exam/feature/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:project_exam/feature/auth/presentation/screens/genre_percense_screen.dart';
 import 'package:project_exam/feature/auth/presentation/screens/log_in_email.dart';
@@ -11,6 +15,7 @@ import 'package:project_exam/feature/auth/presentation/screens/verify_code_creen
 import 'package:project_exam/feature/detail/presentation/screens/detail_screen.dart';
 import 'package:project_exam/feature/explore/presentation/screens/explore_screen.dart';
 import 'package:project_exam/feature/explore/presentation/screens/product_screen.dart';
+import 'package:project_exam/feature/home/presentation/screens/audio_payer_screen.dart';
 import 'package:project_exam/feature/home/presentation/screens/home_screen.dart';
 import 'package:project_exam/feature/main_screen/presentation/screens/main_screen_screen.dart';
 import 'package:project_exam/feature/my_library/presentation/screens/my_library_screen.dart';
@@ -57,6 +62,28 @@ class Routes {
           GoRoute(
             path: Pages.homescreen,
             builder: (context, state) => HomeScreen(),
+            routes: [
+              GoRoute(
+                path: Pages.account,
+                builder: (context, state) => AccountScreen(),
+                routes: [
+                  GoRoute(
+                    path: Pages.profiledetails,
+                    builder: (context, state) => ProfilDetailsScreen(),
+                  ),
+                    GoRoute(
+                    path: Pages.payment,
+                    builder: (context, state) => PaymentScreen(),
+                    routes: [
+                       GoRoute(
+                    path: Pages.addpayment,
+                    builder: (context, state) => AddPaymentScreen(),
+                  ),
+                    ]
+                  ),
+                ],
+              ),
+            ],
           ),
           GoRoute(
             path: Pages.explorescreen,
@@ -79,6 +106,33 @@ class Routes {
           GoRoute(
             path: Pages.detailscreen,
             builder: (context, state) => DetailScreen(),
+            routes: [
+              GoRoute(
+                path: Pages.audioplayer,
+                pageBuilder: (context, state) {
+                  return CustomTransitionPage(
+                    key: state.pageKey,
+                    child: const AudioPayerScreen(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                          return SlideTransition(
+                            position:
+                                Tween<Offset>(
+                                  begin: const Offset(0.0, 1.0),
+                                  end: Offset.zero,
+                                ).animate(
+                                  CurvedAnimation(
+                                    parent: animation,
+                                    curve: Curves.easeInOut,
+                                  ),
+                                ),
+                            child: child,
+                          );
+                        },
+                  );
+                },
+              ),
+            ],
           ),
         ],
       ),

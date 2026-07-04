@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:project_exam/core/assets/icons/app_icons.dart';
 import 'package:project_exam/core/assets/images/app_images.dart';
 import 'package:project_exam/core/constants/app_colors.dart';
+import 'package:project_exam/core/routes/pages.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
@@ -83,7 +85,10 @@ class DetailScreen extends StatelessWidget {
                               color: AppColors.gray1,
                             ),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                context.push(Pages.audioplayerFull);
+
+                              },
                               child: Container(
                                 padding: EdgeInsets.symmetric(horizontal: 31),
                                 child: Row(

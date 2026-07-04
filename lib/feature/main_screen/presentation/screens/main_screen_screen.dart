@@ -31,6 +31,11 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     final currentLocation = GoRouterState.of(context).uri.toString();
     final isDetailScreen = currentLocation == Pages.detailscreen;
+    final isaudioPlayerScreen = currentLocation == Pages.audioplayerFull;
+    final isaccountscreen = currentLocation == Pages.accountFull;
+    final ispaymentscreen = currentLocation == Pages.paymentFull;
+    final isaddpayment = currentLocation == Pages.addpaymentFull;
+
     return Scaffold(
       backgroundColor: AppColors.bgMain,
       body: widget.child,
@@ -39,8 +44,12 @@ class _MainScreenState extends State<MainScreen> {
 
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (!isDetailScreen) MiniPlayer(),
-
+          if (!isDetailScreen &&
+              !isaudioPlayerScreen &&
+              !isaccountscreen &&
+              !ispaymentscreen &&
+              !isaddpayment)
+            MiniPlayer(),
           BottomNavigationBar(
             backgroundColor: AppColors.bgDark,
             selectedItemColor: AppColors.accentGreen,
@@ -52,6 +61,10 @@ class _MainScreenState extends State<MainScreen> {
               GoRouterState.of(context).uri,
             ),
             onTap: (index) {
+              final currentIndex = getSelectedIndexFromUri(
+                GoRouterState.of(context).uri,
+              );
+              if (currentIndex == index) return;
               context.go(pages[index]);
             },
             items: const [

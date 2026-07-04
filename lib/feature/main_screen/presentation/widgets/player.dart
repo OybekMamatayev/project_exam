@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:project_exam/core/assets/images/app_images.dart';
 import 'package:project_exam/core/constants/app_colors.dart';
 import 'package:project_exam/core/routes/pages.dart';
-import 'package:project_exam/feature/main_screen/presentation/cubit/audio_cubit.dart';
-import 'package:project_exam/feature/main_screen/presentation/cubit/audio_state.dart';
+import 'package:project_exam/feature/main_screen/presentation/cubit/player_cubit.dart';
+import 'package:project_exam/feature/main_screen/presentation/cubit/player_state.dart';
 import 'package:project_exam/feature/main_screen/presentation/widgets/player_button.dart';
 
 class MiniPlayer extends StatelessWidget {
@@ -13,7 +13,7 @@ class MiniPlayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AudioCubit, AudioState>(
+    return BlocBuilder<PlayerCubit, PlayerState>(
       builder: (context, state) {
         return InkWell(
           onTap: () {
@@ -62,9 +62,8 @@ class MiniPlayer extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        state.description.isEmpty
-                            ? 'Managers who want to create positive work environments...'
-                            : state.description,
+                        'Managers who want to create positive work environments...',
+
                         style: const TextStyle(
                           color: AppColors.white,
                           fontSize: 12,
@@ -83,22 +82,12 @@ class MiniPlayer extends StatelessWidget {
                   icon: state.isPlaying
                       ? Icons.pause_rounded
                       : Icons.play_arrow_rounded,
-                  onTap: () {
-                    final cubit = context.read<AudioCubit>();
-                    if (state.title.isEmpty) {
-                      cubit.playAsset('audio/futurama.mp3');
-                    } else {
-                      cubit.togglePlay();
-                    }
-                  },
+                  onTap: () {},
                 ),
 
                 const SizedBox(width: 12),
 
-                PlayerButton(
-                  icon: Icons.fast_forward_rounded,
-                  onTap: () => context.read<AudioCubit>().next(),
-                ),
+                PlayerButton(icon: Icons.fast_forward_rounded, onTap: () {}),
               ],
             ),
           ),

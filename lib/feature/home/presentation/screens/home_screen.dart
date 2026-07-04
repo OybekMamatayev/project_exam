@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:project_exam/core/assets/images/app_images.dart';
 import 'package:project_exam/core/constants/app_colors.dart';
+import 'package:project_exam/core/routes/pages.dart';
 import 'package:project_exam/feature/home/presentation/widgets/Fflter_chip.dart';
 import 'package:project_exam/feature/home/presentation/widgets/book_card.dart';
 
@@ -55,7 +57,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Image.asset(AppImages.title, width: 196, height: 38),
                   Spacer(),
-                  CircleAvatar(radius: 24),
+                  InkWell(
+                    onTap: () {
+context.push(Pages.accountFull) ;                   },
+                    borderRadius: BorderRadius.circular(100),
+                    child: CircleAvatar(radius: 24),
+                  ),
                 ],
               ),
             ),
@@ -252,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-              Padding(
+            Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
@@ -319,7 +326,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            
           ],
         ),
       ),

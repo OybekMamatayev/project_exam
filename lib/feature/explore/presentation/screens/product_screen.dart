@@ -33,7 +33,6 @@ class _ProductScreenState extends State<ProductScreen> {
               child: IconButton(
                 onPressed: () {
                   context.pop();
-                  print('Popped from ProductScreen');
                 },
                 icon: Icon(
                   Icons.arrow_back_ios,
