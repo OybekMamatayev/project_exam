@@ -17,13 +17,16 @@ class Pages {
   static const String payment = 'payment_screen';
   static const String profiledetails = 'prodile_details_screen';
   static const String productscreen = 'product_screen';
+  static const String reading = 'reading_screen';
   static const String addpayment = 'addpayment_screen';
   static const String productscreenFull = '$explorescreen/$productscreen';
+  // Audioplayer
   static const String audioplayerFull = '$detailscreen/$audioplayer';
+  static const String readingFull = '$audioplayerFull/$reading';
+
   // Profile
   static const String accountFull = '$homescreen/$account';
   static const String profiledetailsFull = '$accountFull/$profiledetails';
   static const String paymentFull = '$accountFull/$payment';
-    static const String addpaymentFull = '$paymentFull/$addpayment';
-
+  static const String addpaymentFull = '$paymentFull/$addpayment';
 }

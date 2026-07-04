@@ -15,6 +15,8 @@ class MiniPlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PlayerCubit, PlayerState>(
       builder: (context, state) {
+        final cubit = context.read<PlayerCubit>();
+
         return InkWell(
           onTap: () {
             context.go(Pages.detailscreen);
@@ -34,7 +36,7 @@ class MiniPlayer extends StatelessWidget {
                   width: 56,
                   height: 70,
                   decoration: BoxDecoration(
-                    image: DecorationImage(
+                    image: const DecorationImage(
                       image: AssetImage(AppImages.futuramasmall),
                     ),
                     borderRadius: BorderRadius.circular(4),
@@ -48,22 +50,35 @@ class MiniPlayer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        state.title.isEmpty
-                            ? 'Continue Listening'
-                            : state.title,
-                        style: const TextStyle(
-                          color: AppColors.accentGreen,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      Row(
+                        children: [
+                          if (state.isPlaying) ...[
+                            const Icon(
+                              Icons.graphic_eq_rounded,
+                              color: AppColors.accentGreen,
+                              size: 16,
+                            ),
+                            const SizedBox(width: 4),
+                          ],
+                          Text(
+                            state.isPlaying
+                                ? 'Now Playing'
+                                : 'Continue Listening',
+                            style: const TextStyle(
+                              color: AppColors.accentGreen,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Managers who want to create positive work environments...',
-
+                        state.author.isEmpty
+                            ? 'Managers who want to create positive work environments...'
+                            : state.author,
                         style: const TextStyle(
                           color: AppColors.white,
                           fontSize: 12,
@@ -77,17 +92,19 @@ class MiniPlayer extends StatelessWidget {
                 ),
 
                 const SizedBox(width: 16),
-
                 PlayerButton(
                   icon: state.isPlaying
                       ? Icons.pause_rounded
                       : Icons.play_arrow_rounded,
-                  onTap: () {},
+                  onTap: () => cubit.ensurePlaying(),
                 ),
 
                 const SizedBox(width: 12),
 
-                PlayerButton(icon: Icons.fast_forward_rounded, onTap: () {}),
+                PlayerButton(
+                  icon: Icons.fast_forward_rounded,
+                  onTap: () => cubit.seekBy(10),
+                ),
               ],
             ),
           ),

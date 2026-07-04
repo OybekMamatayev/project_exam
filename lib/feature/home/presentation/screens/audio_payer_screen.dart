@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:project_exam/core/assets/icons/app_icons.dart';
 import 'package:project_exam/core/assets/images/app_images.dart';
 import 'package:project_exam/core/constants/app_colors.dart';
+import 'package:project_exam/feature/home/presentation/widgets/reading_card.dart';
 import 'package:project_exam/feature/main_screen/presentation/cubit/player_cubit.dart';
 import 'package:project_exam/feature/main_screen/presentation/cubit/player_state.dart';
 
@@ -15,22 +16,13 @@ class AudioPayerScreen extends StatefulWidget {
 }
 
 class _AudioPayerScreenState extends State<AudioPayerScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final cubit = context.read<PlayerCubit>();
-      if (!cubit.state.hasTrack) {
-        cubit.playTrack(
-          audioUrl:
-              'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-          title: 'Futurama',
-          author: 'By Kory Kogon, Suzette Blakemore, and James wood',
-          coverImage: 'https://via.placeholder.com/400x400',
-        );
-      }
-    });
-  }
+@override
+void initState() {
+  super.initState();
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    context.read<PlayerCubit>().ensurePlaying();
+  });
+}
 
   String _formatDuration(Duration d) {
     final minutes = d.inMinutes.remainder(60).toString();
@@ -290,6 +282,10 @@ class _AudioPayerScreenState extends State<AudioPayerScreen> {
                         ),
                       ],
                       const SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: const ReadingCard(),
+                      ),
                     ],
                   ),
                 );

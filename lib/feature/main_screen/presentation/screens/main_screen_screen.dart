@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:project_exam/core/constants/app_colors.dart';
 import 'package:project_exam/core/routes/pages.dart';
-import 'package:project_exam/feature/main_screen/presentation/widgets/player.dart';
+import 'package:project_exam/feature/main_screen/presentation/widgets/mini_player.dart';
 
 class MainScreen extends StatefulWidget {
   final Widget child;
@@ -35,6 +35,7 @@ class _MainScreenState extends State<MainScreen> {
     final isaccountscreen = currentLocation == Pages.accountFull;
     final ispaymentscreen = currentLocation == Pages.paymentFull;
     final isaddpayment = currentLocation == Pages.addpaymentFull;
+    final isreading = currentLocation == Pages.readingFull;
 
     return Scaffold(
       backgroundColor: AppColors.bgMain,
@@ -48,7 +49,8 @@ class _MainScreenState extends State<MainScreen> {
               !isaudioPlayerScreen &&
               !isaccountscreen &&
               !ispaymentscreen &&
-              !isaddpayment)
+              !isaddpayment &&
+              !isreading)
             MiniPlayer(),
           BottomNavigationBar(
             backgroundColor: AppColors.bgDark,

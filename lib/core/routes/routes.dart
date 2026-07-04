@@ -17,6 +17,7 @@ import 'package:project_exam/feature/explore/presentation/screens/explore_screen
 import 'package:project_exam/feature/explore/presentation/screens/product_screen.dart';
 import 'package:project_exam/feature/home/presentation/screens/audio_payer_screen.dart';
 import 'package:project_exam/feature/home/presentation/screens/home_screen.dart';
+import 'package:project_exam/feature/home/presentation/widgets/reading_detail.dart';
 import 'package:project_exam/feature/main_screen/presentation/screens/main_screen_screen.dart';
 import 'package:project_exam/feature/my_library/presentation/screens/my_library_screen.dart';
 
@@ -71,15 +72,15 @@ class Routes {
                     path: Pages.profiledetails,
                     builder: (context, state) => ProfilDetailsScreen(),
                   ),
-                    GoRoute(
+                  GoRoute(
                     path: Pages.payment,
                     builder: (context, state) => PaymentScreen(),
                     routes: [
-                       GoRoute(
-                    path: Pages.addpayment,
-                    builder: (context, state) => AddPaymentScreen(),
-                  ),
-                    ]
+                      GoRoute(
+                        path: Pages.addpayment,
+                        builder: (context, state) => AddPaymentScreen(),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -109,6 +110,33 @@ class Routes {
             routes: [
               GoRoute(
                 path: Pages.audioplayer,
+                routes: [
+                  GoRoute(
+                    path: Pages.reading,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        key: state.pageKey,
+                        child: const ReadingDetail(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                              return SlideTransition(
+                                position:
+                                    Tween<Offset>(
+                                      begin: const Offset(0.0, 1.0),
+                                      end: Offset.zero,
+                                    ).animate(
+                                      CurvedAnimation(
+                                        parent: animation,
+                                        curve: Curves.easeInOut,
+                                      ),
+                                    ),
+                                child: child,
+                              );
+                            },
+                      );
+                    },
+                  ),
+                ],
                 pageBuilder: (context, state) {
                   return CustomTransitionPage(
                     key: state.pageKey,

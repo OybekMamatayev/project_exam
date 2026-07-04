@@ -5,6 +5,14 @@ import 'player_state.dart';
 class PlayerCubit extends Cubit<PlayerState> {
   final AudioPlayer _audioPlayer = AudioPlayer();
 
+  static const String defaultAudioUrl =
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+  static const String defaultTitle = 'Futurama';
+  static const String defaultAuthor =
+      'Managers who want to create positive work environments...';
+  static const String defaultCoverImage =
+      'https://via.placeholder.com/400x400';
+
   PlayerCubit() : super(const PlayerState()) {
     _audioPlayer.positionStream.listen((pos) {
       emit(state.copyWith(position: pos));
@@ -21,6 +29,19 @@ class PlayerCubit extends Cubit<PlayerState> {
         emit(state.copyWith(status: PlayerStatus.paused));
       }
     });
+  }
+
+  Future<void> ensurePlaying() async {
+    if (!state.hasTrack) {
+      await playTrack(
+        audioUrl: defaultAudioUrl,
+        title: defaultTitle,
+        author: defaultAuthor,
+        coverImage: defaultCoverImage,
+      );
+    } else {
+      togglePlay();
+    }
   }
 
   Future<void> playTrack({
