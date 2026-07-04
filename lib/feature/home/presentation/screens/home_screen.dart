@@ -59,7 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Spacer(),
                   InkWell(
                     onTap: () {
-context.push(Pages.accountFull) ;                   },
+                      context.go(Pages.accountFull);
+                    },
                     borderRadius: BorderRadius.circular(100),
                     child: CircleAvatar(radius: 24),
                   ),
