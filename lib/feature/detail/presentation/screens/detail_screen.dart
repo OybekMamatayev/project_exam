@@ -40,7 +40,6 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 1. Rasm va Yuqori tugmalar (Siz yozgan qism)
             Container(
               height: 357,
               decoration: const BoxDecoration(
@@ -111,7 +110,7 @@ class DetailScreen extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: () {
-                                context.push(Pages.audioplayer);
+                                context.push(Pages.audioplayerFull);
                               },
                               child: Container(
                                 padding: const EdgeInsets.symmetric(

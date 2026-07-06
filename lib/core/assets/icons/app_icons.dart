@@ -7,6 +7,9 @@ class AppIcons {
   static const String skipBack = "icons/skip_back.svg";
   static const String skipForward = "icons/skip_forward.svg";
   static const String skip = "icons/skip.svg";
-    static const String play = "icons/play.svg";
-
+  static const String play = "icons/play.svg";
+  static const String home = "icons/home.svg";
+  static const String library = "icons/library.svg";
+  static const String search = "icons/search.svg";
+  
 }

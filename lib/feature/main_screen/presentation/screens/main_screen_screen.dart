@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:project_exam/core/assets/icons/app_icons.dart';
 import 'package:project_exam/core/constants/app_colors.dart';
 import 'package:project_exam/core/routes/pages.dart';
 import 'package:project_exam/feature/main_screen/presentation/widgets/mini_player.dart';
@@ -68,21 +70,33 @@ class _MainScreenState extends State<MainScreen> {
               );
               if (currentIndex == index) return;
               context.go(pages[index]);
-            },
-            items: const [
+             },
+            items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                activeIcon: Icon(Icons.home),
+                icon: SvgPicture.asset(AppIcons.home, width: 24, height: 24),
+                activeIcon: SvgPicture.asset(
+                  AppIcons.home,
+                  width: 24,
+                  height: 24,
+                ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                activeIcon: Icon(Icons.search),
+                icon: SvgPicture.asset(AppIcons.search, width: 24, height: 24),
+                activeIcon: SvgPicture.asset(
+                  AppIcons.search,
+                  width: 24,
+                  height: 24,
+                ),
                 label: 'Explore',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.library_music_outlined),
-                activeIcon: Icon(Icons.library_music),
+                icon: SvgPicture.asset(AppIcons.library, width: 24, height: 24),
+                activeIcon: SvgPicture.asset(
+                  AppIcons.library,
+                  width: 24,
+                  height: 24,
+                ),
                 label: 'Library',
               ),
             ],
