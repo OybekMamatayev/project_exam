@@ -40,6 +40,7 @@ class _MainScreenState extends State<MainScreen> {
     final ispremium = currentLocation == Pages.premiumplansFull;
     final ispremiumaddcard = currentLocation == Pages.premiumplansaddcardFull;
     final issubcription = currentLocation == Pages.subcriptionFull;
+    final issucces = currentLocation == Pages.premiumsuccesFull;
 
     final ispremiumselectcard =
         currentLocation == Pages.premiumplansselectcardFull;
@@ -61,13 +62,15 @@ class _MainScreenState extends State<MainScreen> {
               !ispremium &&
               !ispremiumaddcard &&
               !ispremiumselectcard &&
-              !issubcription)
+              !issubcription &&
+              !issucces)
             MiniPlayer(),
 
           if (!ispremium &&
               !ispremiumaddcard &&
               !ispremiumselectcard &&
-              !issubcription)
+              !issubcription &&
+              !issucces)
             BottomNavigationBar(
               backgroundColor: AppColors.bgDark,
               selectedItemColor: AppColors.accentGreen,

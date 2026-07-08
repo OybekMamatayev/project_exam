@@ -22,6 +22,7 @@ import 'package:project_exam/feature/main_screen/presentation/screens/main_scree
 import 'package:project_exam/feature/my_library/presentation/screens/my_library_screen.dart';
 import 'package:project_exam/feature/premium_plans/presentation/screens/premium_plans_add_card_screen.dart';
 import 'package:project_exam/feature/premium_plans/presentation/screens/premium_plans_screen.dart';
+import 'package:project_exam/feature/premium_plans/presentation/screens/premium_succes.dart';
 import 'package:project_exam/feature/premium_plans/presentation/screens/premmium_plans_select_card.dart';
 import 'package:project_exam/feature/subcribtion/presentation/screens/subcribtion_screen.dart';
 
@@ -103,6 +104,12 @@ class Routes {
                             path: Pages.premiumplansselectcard,
                             builder: (context, state) =>
                                 PremmiumPlansSelectCard(),
+                            routes: [
+                              GoRoute(
+                                path: Pages.succes,
+                                builder: (context, state) => PremiumSucces(),
+                              ),
+                            ],
                           ),
                         ],
                       ),

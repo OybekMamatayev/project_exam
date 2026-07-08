@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:project_exam/core/constants/app_colors.dart';
+import 'package:project_exam/core/routes/pages.dart';
 
 class PremmiumPlansSelectCard extends StatefulWidget {
   const PremmiumPlansSelectCard({super.key});
@@ -27,8 +29,10 @@ class _PremmiumPlansSelectCardState extends State<PremmiumPlansSelectCard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bgDark,
-      appBar: AppBar(automaticallyImplyLeading: false,      backgroundColor: AppColors.bgDark,
-),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.bgDark,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -49,8 +53,6 @@ class _PremmiumPlansSelectCardState extends State<PremmiumPlansSelectCard> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
-               
                 ],
               ),
               const SizedBox(height: 4),
@@ -150,13 +152,15 @@ class _PremmiumPlansSelectCardState extends State<PremmiumPlansSelectCard> {
                     );
                   },
                 ),
-              ),
+              ),Spacer(),
 
               SizedBox(
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go(Pages.premiumsuccesFull);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.accentGreen,
                     padding: const EdgeInsets.symmetric(vertical: 16),

@@ -20,7 +20,6 @@ class Pages {
   static const String reading = 'reading_screen';
   static const String addpayment = 'addpayment_screen';
   static const String subscription = 'subcription_screen';
-  static const String succes = 'succes_screen';
 
   static const String productscreenFull = '$explorescreen/$productscreen';
   // Audioplayer
@@ -40,10 +39,11 @@ class Pages {
       '$premiumplansFull/$premiumplansaddcard';
   static const String premiumplansselectcardFull =
       '$premiumplansaddcardFull/$premiumplansselectcard';
-  static const String premiumsuccesFull = '$premiumplansaddcardFull/$succes';
+  static const String premiumsuccesFull = '$premiumplansselectcardFull/$succes';
 
   static const String premiumplans = 'premium_plans_screen';
   static const String premiumplansaddcard = 'premium_plans_add_card_screen';
   static const String premiumplansselectcard =
       'premium_plans_select_card_screen';
+  static const String succes = 'succes_screen';
 }
