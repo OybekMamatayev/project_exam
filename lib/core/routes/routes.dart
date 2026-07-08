@@ -20,7 +20,10 @@ import 'package:project_exam/feature/home/presentation/screens/home_screen.dart'
 import 'package:project_exam/feature/home/presentation/widgets/reading_detail.dart';
 import 'package:project_exam/feature/main_screen/presentation/screens/main_screen_screen.dart';
 import 'package:project_exam/feature/my_library/presentation/screens/my_library_screen.dart';
+import 'package:project_exam/feature/premium_plans/presentation/screens/premium_plans_add_card_screen.dart';
 import 'package:project_exam/feature/premium_plans/presentation/screens/premium_plans_screen.dart';
+import 'package:project_exam/feature/premium_plans/presentation/screens/premmium_plans_select_card.dart';
+import 'package:project_exam/feature/subcribtion/presentation/screens/subcribtion_screen.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'root',
@@ -74,6 +77,10 @@ class Routes {
                     builder: (context, state) => ProfilDetailsScreen(),
                   ),
                   GoRoute(
+                    path: Pages.subscription,
+                    builder: (context, state) => SubcribtionScreen(),
+                  ),
+                  GoRoute(
                     path: Pages.payment,
                     builder: (context, state) => PaymentScreen(),
                     routes: [
@@ -86,6 +93,20 @@ class Routes {
                   GoRoute(
                     path: Pages.premiumplans,
                     builder: (context, state) => PremiumPlansScreen(),
+                    routes: [
+                      GoRoute(
+                        path: Pages.premiumplansaddcard,
+                        builder: (context, state) =>
+                            PremiumPlansAddCardScreen(),
+                        routes: [
+                          GoRoute(
+                            path: Pages.premiumplansselectcard,
+                            builder: (context, state) =>
+                                PremmiumPlansSelectCard(),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),

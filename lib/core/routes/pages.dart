@@ -18,8 +18,10 @@ class Pages {
   static const String profiledetails = 'prodile_details_screen';
   static const String productscreen = 'product_screen';
   static const String reading = 'reading_screen';
-  static const String premiumplans = 'premium_plans_screen';
   static const String addpayment = 'addpayment_screen';
+  static const String subscription = 'subcription_screen';
+  static const String succes = 'succes_screen';
+
   static const String productscreenFull = '$explorescreen/$productscreen';
   // Audioplayer
   static const String audioplayerFull = '$detailscreen/$audioplayer';
@@ -29,6 +31,19 @@ class Pages {
   static const String accountFull = '$homescreen/$account';
   static const String profiledetailsFull = '$accountFull/$profiledetails';
   static const String paymentFull = '$accountFull/$payment';
-  static const String premiumplansFull = '$accountFull/$premiumplans';
   static const String addpaymentFull = '$paymentFull/$addpayment';
+  static const String subcriptionFull = '$accountFull/$subscription';
+
+  // Premium plans
+  static const String premiumplansFull = '$accountFull/$premiumplans';
+  static const String premiumplansaddcardFull =
+      '$premiumplansFull/$premiumplansaddcard';
+  static const String premiumplansselectcardFull =
+      '$premiumplansaddcardFull/$premiumplansselectcard';
+  static const String premiumsuccesFull = '$premiumplansaddcardFull/$succes';
+
+  static const String premiumplans = 'premium_plans_screen';
+  static const String premiumplansaddcard = 'premium_plans_add_card_screen';
+  static const String premiumplansselectcard =
+      'premium_plans_select_card_screen';
 }

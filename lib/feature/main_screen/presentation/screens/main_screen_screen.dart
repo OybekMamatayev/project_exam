@@ -10,7 +10,6 @@ class MainScreen extends StatefulWidget {
   final Widget child;
   final GoRouterState state;
   const MainScreen({super.key, required this.child, required this.state});
-
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -39,6 +38,11 @@ class _MainScreenState extends State<MainScreen> {
     final isaddpayment = currentLocation == Pages.addpaymentFull;
     final isreading = currentLocation == Pages.readingFull;
     final ispremium = currentLocation == Pages.premiumplansFull;
+    final ispremiumaddcard = currentLocation == Pages.premiumplansaddcardFull;
+    final issubcription = currentLocation == Pages.subcriptionFull;
+
+    final ispremiumselectcard =
+        currentLocation == Pages.premiumplansselectcardFull;
 
     return Scaffold(
       backgroundColor: AppColors.bgMain,
@@ -54,9 +58,16 @@ class _MainScreenState extends State<MainScreen> {
               !ispaymentscreen &&
               !isaddpayment &&
               !isreading &&
-              !ispremium)
+              !ispremium &&
+              !ispremiumaddcard &&
+              !ispremiumselectcard &&
+              !issubcription)
             MiniPlayer(),
-          if (!ispremium)
+
+          if (!ispremium &&
+              !ispremiumaddcard &&
+              !ispremiumselectcard &&
+              !issubcription)
             BottomNavigationBar(
               backgroundColor: AppColors.bgDark,
               selectedItemColor: AppColors.accentGreen,

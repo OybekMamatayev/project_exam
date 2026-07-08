@@ -9,11 +9,11 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => PlayerCubit(), 
+      create: (_) => PlayerCubit(),
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: Routes.router,

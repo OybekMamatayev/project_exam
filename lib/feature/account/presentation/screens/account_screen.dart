@@ -70,21 +70,27 @@ class AccountScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.accentGreen,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Text(
-                      'Premium',
-                      style: TextStyle(
-                        color: AppColors.bgBlue,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
+                  InkWell(
+                    onTap: () {
+                      context.go(Pages.premiumplansFull);
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.accentGreen,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Text(
+                        'Premium',
+                        style: TextStyle(
+                          color: AppColors.bgBlue,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
@@ -109,7 +115,7 @@ class AccountScreen extends StatelessWidget {
                 icon: Icons.star_border,
                 label: 'Subscription',
                 onTap: () {
-                  context.go(Pages.premiumplansFull);
+                  context.go(Pages.subcriptionFull);
                 },
               ),
               SizedBox(height: 10),

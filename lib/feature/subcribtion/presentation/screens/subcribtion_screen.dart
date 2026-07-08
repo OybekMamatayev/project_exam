@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:project_exam/core/constants/app_colors.dart';
-import 'package:project_exam/core/routes/pages.dart';
-import 'package:project_exam/feature/premium_plans/presentation/widgets/plan_card.dart';
 
-class PremiumPlansScreen extends StatefulWidget {
-  const PremiumPlansScreen({super.key});
+class SubcribtionScreen extends StatefulWidget {
+  const SubcribtionScreen({super.key});
 
   @override
-  State<PremiumPlansScreen> createState() => _PremiumPlansScreenState();
+  State<SubcribtionScreen> createState() => _SubcribtionScreenState();
 }
 
-class _PremiumPlansScreenState extends State<PremiumPlansScreen> {
+class _SubcribtionScreenState extends State<SubcribtionScreen> {
   int selectedIndex = 1;
 
   @override
@@ -54,38 +52,62 @@ class _PremiumPlansScreenState extends State<PremiumPlansScreen> {
                   ),
                 ),
                 SizedBox(height: 12),
-                Row(
-                  children: [
-                    Expanded(
-                      child: PlanCard(
-                        title: 'Monthly',
-                        price: 'USD 60.00',
-                        subtitle: 'Billed & recurring\nmonthly\nCancel anytime',
-                        isSelected: selectedIndex == 0,
-                        onTap: () => setState(() => selectedIndex = 0),
-                      ),
-                    ),
+                Container(
+                  height: 166,
+                  padding: EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: AppColors.bgBlue,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: AppColors.accentGreen, width: 2),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: .center,
+                    children: [
+                      Column(
+                        crossAxisAlignment: .center,
+                        children: [
+                          Text(
+                            textAlign: .center,
+                            'title',
+                            style: TextStyle(
+                              color: AppColors.gray1,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                            ),
+                          ),
+                          SizedBox(height: 6),
+                          Text(
+                            textAlign: .center,
 
-                    SizedBox(width: 12),
-                    Expanded(
-                      child: PlanCard(
-                        title: 'Monthly',
-                        price: 'USD 90.00',
-                        subtitle: 'Billed & recurring\nmonthly\nCancel anytime',
-                        isSelected: selectedIndex == 1,
-                        onTap: () => setState(() => selectedIndex = 1),
+                            'price',
+                            style: TextStyle(
+                              color: AppColors.white,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            textAlign: .center,
+
+                            'subtitle',
+                            style: TextStyle(
+                              color: AppColors.gray1,
+                              fontSize: 14,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                        ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(height: 24),
                 SizedBox(
                   height: 48,
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {
-                      context.go(Pages.premiumplansaddcardFull);
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.accentGreen,
                       padding: EdgeInsets.symmetric(vertical: 16),

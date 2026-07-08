@@ -10,8 +10,7 @@ class PlayerCubit extends Cubit<PlayerState> {
   static const String defaultTitle = 'Futurama';
   static const String defaultAuthor =
       'Managers who want to create positive work environments...';
-  static const String defaultCoverImage =
-      'https://via.placeholder.com/400x400';
+  static const String defaultCoverImage = 'https://via.placeholder.com/400x400';
 
   PlayerCubit() : super(const PlayerState()) {
     _audioPlayer.positionStream.listen((pos) {
@@ -38,6 +37,7 @@ class PlayerCubit extends Cubit<PlayerState> {
         title: defaultTitle,
         author: defaultAuthor,
         coverImage: defaultCoverImage,
+        autoPlay: false
       );
     } else {
       togglePlay();
@@ -49,9 +49,10 @@ class PlayerCubit extends Cubit<PlayerState> {
     required String title,
     required String author,
     required String coverImage,
+    bool autoPlay = true,
   }) async {
     if (state.audioUrl == audioUrl && state.hasTrack) {
-      togglePlay();
+      if (autoPlay) togglePlay();
       return;
     }
 
@@ -67,7 +68,12 @@ class PlayerCubit extends Cubit<PlayerState> {
         ),
       );
       await _audioPlayer.setUrl(audioUrl);
-      _audioPlayer.play();
+
+      if (autoPlay) {
+        _audioPlayer.play();
+      } else {
+        _audioPlayer.pause();
+      }
     } catch (e) {
       emit(state.copyWith(status: PlayerStatus.error));
     }
