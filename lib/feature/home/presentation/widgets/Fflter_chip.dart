@@ -12,12 +12,12 @@ class FflterChip extends StatefulWidget {
 }
 
 class _FflterChipState extends State<FflterChip> {
-  late bool _isSelected; 
+  late bool _isSelected;
 
   @override
   void initState() {
     super.initState();
-    _isSelected = widget.isSelected; 
+    _isSelected = widget.isSelected;
   }
 
   @override
@@ -26,7 +26,7 @@ class _FflterChipState extends State<FflterChip> {
       borderRadius: BorderRadius.circular(100),
       onTap: () {
         setState(() {
-          _isSelected = !_isSelected; 
+          _isSelected = !_isSelected;
         });
       },
       child: Container(

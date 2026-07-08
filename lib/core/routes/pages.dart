@@ -18,6 +18,7 @@ class Pages {
   static const String profiledetails = 'prodile_details_screen';
   static const String productscreen = 'product_screen';
   static const String reading = 'reading_screen';
+  static const String premiumplans = 'premium_plans_screen';
   static const String addpayment = 'addpayment_screen';
   static const String productscreenFull = '$explorescreen/$productscreen';
   // Audioplayer
@@ -28,5 +29,6 @@ class Pages {
   static const String accountFull = '$homescreen/$account';
   static const String profiledetailsFull = '$accountFull/$profiledetails';
   static const String paymentFull = '$accountFull/$payment';
+  static const String premiumplansFull = '$accountFull/$premiumplans';
   static const String addpaymentFull = '$paymentFull/$addpayment';
 }

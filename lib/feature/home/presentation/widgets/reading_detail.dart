@@ -52,7 +52,7 @@ class ReadingDetail extends StatelessWidget {
                       color: AppColors.white,
                       size: 26,
                     ),
-                    onPressed: () => context.go(Pages.audioplayerFull),
+                    onPressed: () => context.pop(),
                   ),
                   Row(
                     children: [

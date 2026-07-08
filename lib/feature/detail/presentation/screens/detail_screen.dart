@@ -75,7 +75,10 @@ class DetailScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                context.push(Pages.readingFull);
+                              },
+
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 31,

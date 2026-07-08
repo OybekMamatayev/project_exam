@@ -38,6 +38,7 @@ class _MainScreenState extends State<MainScreen> {
     final ispaymentscreen = currentLocation == Pages.paymentFull;
     final isaddpayment = currentLocation == Pages.addpaymentFull;
     final isreading = currentLocation == Pages.readingFull;
+    final ispremium = currentLocation == Pages.premiumplansFull;
 
     return Scaffold(
       backgroundColor: AppColors.bgMain,
@@ -52,55 +53,54 @@ class _MainScreenState extends State<MainScreen> {
               !isaccountscreen &&
               !ispaymentscreen &&
               !isaddpayment &&
-              !isreading)
+              !isreading &&
+              !ispremium)
             MiniPlayer(),
-          BottomNavigationBar(
-            backgroundColor: AppColors.bgDark,
-            selectedItemColor: AppColors.accentGreen,
-            unselectedItemColor: AppColors.gray2,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            type: BottomNavigationBarType.fixed,
-            currentIndex: getSelectedIndexFromUri(
-              GoRouterState.of(context).uri,
-            ),
-            onTap: (index) {
-              final currentIndex = getSelectedIndexFromUri(
+          if (!ispremium)
+            BottomNavigationBar(
+              backgroundColor: AppColors.bgDark,
+              selectedItemColor: AppColors.accentGreen,
+              unselectedItemColor: AppColors.gray2,
+
+              showSelectedLabels: true,
+              showUnselectedLabels: true,
+              type: BottomNavigationBarType.fixed,
+              currentIndex: getSelectedIndexFromUri(
                 GoRouterState.of(context).uri,
-              );
-              if (currentIndex == index) return;
-              context.go(pages[index]);
-             },
-            items: [
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(AppIcons.home, width: 24, height: 24),
-                activeIcon: SvgPicture.asset(
-                  AppIcons.home,
-                  width: 24,
-                  height: 24,
-                ),
-                label: 'Home',
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(AppIcons.search, width: 24, height: 24),
-                activeIcon: SvgPicture.asset(
-                  AppIcons.search,
-                  width: 24,
-                  height: 24,
+              onTap: (index) {
+                final currentIndex = getSelectedIndexFromUri(
+                  GoRouterState.of(context).uri,
+                );
+                if (currentIndex == index) return;
+                context.go(pages[index]);
+              },
+              items: [
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(AppIcons.home, width: 24, height: 24),
+
+                  label: 'Home',
                 ),
-                label: 'Explore',
-              ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(AppIcons.library, width: 24, height: 24),
-                activeIcon: SvgPicture.asset(
-                  AppIcons.library,
-                  width: 24,
-                  height: 24,
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.search,
+                    width: 24,
+                    height: 24,
+                  ),
+
+                  label: 'Explore',
                 ),
-                label: 'Library',
-              ),
-            ],
-          ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    AppIcons.library,
+                    width: 24,
+                    height: 24,
+                  ),
+
+                  label: 'Library',
+                ),
+              ],
+            ),
         ],
       ),
     );

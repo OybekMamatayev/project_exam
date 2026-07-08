@@ -108,7 +108,9 @@ class AccountScreen extends StatelessWidget {
               MenuItem(
                 icon: Icons.star_border,
                 label: 'Subscription',
-                onTap: () {},
+                onTap: () {
+                  context.go(Pages.premiumplansFull);
+                },
               ),
               SizedBox(height: 10),
               Divider(color: AppColors.gray4, thickness: 1, height: 1),
